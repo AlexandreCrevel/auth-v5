@@ -1,12 +1,11 @@
 import Navbar from "@/components/Navbar/Navbar";
-import { getServerSession } from "next-auth";
-import { authOptions } from "./api/auth/[...nextauth]/auth";
+import { auth } from "@/auth";
 
 export default async function Home() {
-  const session = await getServerSession(authOptions)
+  const session = await auth();
   return (
     <>       
-    <Navbar session={session?.user} />
+    <Navbar />
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div>{JSON.stringify(session?.user)}</div>
     </main>
