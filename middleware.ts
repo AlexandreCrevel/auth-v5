@@ -31,6 +31,8 @@ export default auth((req) => {
   if (!isPublicRoute && !isLoggedIn) {
     return Response.redirect(new URL('/api/auth/signin', nextUrl));
   }
+
+  return null;
 });
 
 export const config = {
