@@ -12,11 +12,10 @@ export const publicRoutes = ['/'];
  */
 export const authRoutes = [
   '/login',
-  '/auth/login',
-  '/auth/register',
-  '/auth/error',
-  '/auth/reset',
-  '/auth/new-password',
+  '/register',
+  '/error',
+  '/reset',
+  '/new-password',
 ];
 
 /**
