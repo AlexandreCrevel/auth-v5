@@ -1,16 +1,14 @@
 import { auth } from '@/auth';
-import Navbar from '@/components/Navbar/Navbar'
-import React from 'react'
+import Navbar from '@/components/Navbar/Navbar';
 
 const Dashboard = async () => {
-const session = await auth(); 
+  const session = await auth();
   return (
     <div>
       <Navbar />
-      <div>{JSON.stringify(session?.user)}</div>
-
+      <div>{JSON.stringify(session)}</div>
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;
