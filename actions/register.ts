@@ -2,7 +2,7 @@
 import { getUserByEmail } from '@/data/user';
 import { db } from '@/lib/prisma';
 import { RegisterSchema, RegisterSchemaType } from '@/schemas';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 export const register = async (values: RegisterSchemaType) => {
   const validatedFields = RegisterSchema.safeParse(values);

@@ -1,28 +1,29 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
 
 type LoginButtonProps = {
   children: React.ReactNode;
-  mode?: "modal" | "redirect";
+  mode?: 'modal' | 'redirect';
   asChild?: boolean;
 };
 
 const LoginButton = ({
   children,
-  mode = "redirect",
+  mode = 'redirect',
   asChild = false,
 }: LoginButtonProps) => {
-
   const router = useRouter();
 
-const onClick = () => {
-  router.push("api/auth/signin");
-}
+  const onClick = () => {
+    router.push('/login');
+  };
 
   return (
-    <span className="cursor-pointer" onClick={onClick}>{children}</span>
-  )
-}
+    <span className="cursor-pointer" onClick={onClick}>
+      {children}
+    </span>
+  );
+};
 
-export default LoginButton
+export default LoginButton;

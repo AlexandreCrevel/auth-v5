@@ -1,4 +1,4 @@
-import { auth } from '@/auth';
+import { auth, signOut } from '@/auth';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -15,14 +15,14 @@ const Navbar = async () => {
       <div className="flex-none gap-2">
         <div className="dropdown dropdown-end">
           <button className="avatar btn btn-circle btn-ghost w-10 rounded-full">
-            {/* <div className="w-10 rounded-full"> */}
-            <Image
-              alt="Tailwind CSS Navbar component"
-              src={session?.user?.image}
-              width={40}
-              height={40}
-            />
-            {/* </div> */}
+            {session?.user?.image && (
+              <Image
+                alt="Tailwind CSS Navbar component"
+                src={session?.user?.image}
+                width={40}
+                height={40}
+              />
+            )}
           </button>
           <ul className="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-100 p-2 shadow">
             <li>
@@ -33,6 +33,16 @@ const Navbar = async () => {
             </li>
             <li>
               <button>Settings</button>
+            </li>
+            <li>
+              <form
+                action={async () => {
+                  'use server';
+                  await signOut();
+                }}
+              >
+                <button type="submit">Logout</button>
+              </form>
             </li>
             <li>
               {/* <form>
