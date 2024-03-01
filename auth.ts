@@ -23,6 +23,7 @@ export const {
       return session;
     },
     jwt: async ({ token }) => {
+      console.log('token', token);
       if (!token.sub) return token;
 
       const existingUser = await getUserById(token.sub);
@@ -32,9 +33,21 @@ export const {
       return token;
     },
   },
+  events: {
+    async linkAccount({ user }) {
+      await db.user.update({
+        where: { id: user.id },
+        data: { emailVerified: new Date() },
+      });
+    },
+  },
   adapter: PrismaAdapter(db),
   session: {
     strategy: 'jwt',
+  },
+  pages: {
+    signIn: '/login',
+    error: '/loginerror',
   },
   ...authConfig,
 });

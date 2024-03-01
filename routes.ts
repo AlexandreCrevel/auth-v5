@@ -13,7 +13,7 @@ export const publicRoutes = ['/'];
 export const authRoutes = [
   '/login',
   '/register',
-  '/error',
+  '/loginerror',
   '/reset',
   '/new-password',
 ];
